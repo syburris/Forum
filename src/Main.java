@@ -23,5 +23,9 @@ public class Main {
             posts.add(post);
         }
 
+        Scanner consoleScanner = new Scanner(System.in);
+        int replyID = -1;
+
+
     }
 }
