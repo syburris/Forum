@@ -10,19 +10,7 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        ArrayList<Post> posts = new ArrayList<>();
-
-        //read all posts into memory
-        File file = new File("posts.txt");
-        Scanner fileScanner = new Scanner(file);
-
-        while (fileScanner.hasNext()) {
-            String line = fileScanner.nextLine();
-            String[] columns = line.split("\\|");
-            Post post = new Post(Integer.valueOf(columns[0]),columns[1],columns[2]);
-            posts.add(post);
-        }
-
+        ArrayList<Post> posts = Main.load("posts.txt");
         Scanner consoleScanner = new Scanner(System.in);
         int replyID = -1;
 
@@ -38,8 +26,31 @@ public class Main {
             System.out.println("Please enter another reply ID");
             replyID = Integer.valueOf(consoleScanner.nextLine());
         }
-
-
-
     }
+
+    public static ArrayList<Post> load( String filename){
+        ArrayList<Post> posts = new ArrayList<>();
+
+        //read all posts into memory
+        File file = new File(filename);
+        Scanner fileScanner = null;
+        try {
+            fileScanner = new Scanner(file);
+            while (fileScanner.hasNext()) {
+                String line = fileScanner.nextLine();
+                String[] columns = line.split("\\|");
+                Post post = new Post(Integer.valueOf(columns[0]),columns[1],columns[2]);
+                posts.add(post);
+
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return posts;
+    }
+
+
+
+
 }
