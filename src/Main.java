@@ -26,6 +26,20 @@ public class Main {
         Scanner consoleScanner = new Scanner(System.in);
         int replyID = -1;
 
+        //loop over posts and print the ones with correct replyID
+        while (true) {
+            int id = 0;
+            for (Post post : posts) {
+                if (post.replyId == replyID) {
+                    System.out.printf("(%d) %s by %s\n", id, post.text, post.author);
+                }
+                id++;
+            }
+            System.out.println("Please enter another reply ID");
+            replyID = Integer.valueOf(consoleScanner.nextLine());
+        }
+
+
 
     }
 }
