@@ -19,7 +19,8 @@ public class Main {
         //loop over posts and print the ones with correct replyID
         while (true) {
             printPosts(posts,replyID);
-            replyID = readID(consoleScanner);
+
+            replyID = readID(consoleScanner.nextLine());
         }
     }
 
@@ -49,9 +50,9 @@ public class Main {
         }
     }
 
-    public static int readID(Scanner consoleScanner) {
+    public static int readID(String input) {
         System.out.println("Please enter another reply ID");
-        return Integer.valueOf(consoleScanner.nextLine());
+        return Integer.valueOf(input);
     }
 
 
