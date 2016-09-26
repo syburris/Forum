@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -11,7 +12,7 @@ public class MainTest {
     @Test
     public void testLoad() throws Exception {
         // Given
-        String filename = "./test/post.txt";
+        File f = new File("posts.txt");
         /* Content of that file should be
             ```
             -1|alice|Hey guys!
@@ -20,7 +21,7 @@ public class MainTest {
          */
 
         // If / When
-        ArrayList<Post> posts = Main.load(filename);
+        ArrayList<Post> posts = Main.loadPosts(f);
 
         // Then
         assertTrue(posts.get(0).getClass().equals(Post.class));
